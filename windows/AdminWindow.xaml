@@ -1,0 +1,84 @@
+﻿<Window x:Class="VorobyevP_Scooter_practice.windows.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VorobyevP_Scooter_practice.windows"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="756" Width="1126">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Name="txtSearch" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="27,0,5,0" TextChanged="txtSearch_TextChanged_1" Height="22"/>
+        <ComboBox Name="cmbSorting" Grid.Row="1" Grid.Column="1" SelectedIndex="0" VerticalAlignment="Center" Margin="5,0,5,0" SelectionChanged="cmbSorting_SelectionChanged" Height="36">
+            <ComboBoxItem Content="Без сортировки"/>
+            <ComboBoxItem Content="Сортировка по модели (возрастание)" Tag="model,Ascending"/>
+            <ComboBoxItem Content="Сортировка по модели (убывание)" Tag="model,Descending"/>
+            <ComboBoxItem Content="Сортировка по производителю (возрастание)" Tag="manufacturer,Ascending"/>
+            <ComboBoxItem Content="Сортировка по производителю (убывание)" Tag="manufacturer,Descending"/>
+            <ComboBoxItem Content="Сортировка по max скорости (возрастание)" Tag="max_speed,Ascending"/>
+            <ComboBoxItem Content="Сортировка по max скорости (убывание)" Tag="max_speed,Descending"/>
+        </ComboBox>
+
+        <Button Grid.Column="2" Content="Добавить" HorizontalAlignment="Left" Margin="100,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="36" Width="104" Click="AddButton_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnPrintList" Grid.Column="3" Content="Печать списка" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="36" Click="btnPrintList_Click" Margin="35,0,0,0" Width="123"/>
+        <FlowDocumentReader Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Margin="5,5,5,5">
+            <FlowDocument x:Name ="doc" ColumnWidth="900">
+                <BlockUIContainer>
+                    <ListView Name="LViewProduct" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Margin="5" ItemsSource="{Binding scooters}" MouseDoubleClick="LViewProduct_MouseDoubleClick">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="1" Background="{Binding scooters}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+
+                                        <Image Grid.Row="0" Width="180" Height="180" Stretch="Uniform" Source="/Resources/scooter.png" />
+
+                                        <StackPanel Grid.Row="1" Margin="5">
+
+                                            <TextBlock Text="{Binding model}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding manufacturer}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding power}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding max_speed}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button x:Name="UpdateList" Grid.Column="2" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="36" Width="38" Click="UpdateList_Click" Margin="29,0,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/up.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

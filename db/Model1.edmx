@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище VorobyevP_Scooter_practiceModel" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 16.1.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="charging_station">
+          <Key>
+            <PropertyRef Name="id_station" />
+          </Key>
+          <Property Name="id_station" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="available_slots" Type="int" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_patronymic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_gender" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="20" />
+          <Property Name="address" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="id_employee" />
+          </Key>
+          <Property Name="id_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="id_gender" Type="int" />
+          <Property Name="emp_surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_patronymic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="60" />
+          <Property Name="id_work_schedule" Type="int" Nullable="false" />
+          <Property Name="salary" Type="money" />
+          <Property Name="pswd" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="id_feedback" />
+          </Key>
+          <Property Name="id_feedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_client" Type="int" Nullable="false" />
+          <Property Name="id_scooter" Type="int" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namegender" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_client" Type="int" Nullable="false" />
+          <Property Name="id_scooter" Type="int" Nullable="false" />
+          <Property Name="start_datetime" Type="timestamp" Precision="6" />
+          <Property Name="end_datetime" Type="timestamp" Precision="6" />
+          <Property Name="total_cost" Type="money" Nullable="false" />
+          <Property Name="id_promotion" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="promotions">
+          <Key>
+            <PropertyRef Name="id_promotion" />
+          </Key>
+          <Property Name="id_promotion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="promotionname" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="start_date" Type="date" Nullable="false" />
+          <Property Name="end_date" Type="date" Nullable="false" />
+          <Property Name="discount_amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namerole" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="scooters">
+          <Key>
+            <PropertyRef Name="id_scooter" />
+          </Key>
+          <Property Name="id_scooter" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="power" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="max_speed" Type="int" />
+          <Property Name="weight" Type="int" />
+          <Property Name="load_capacity" Type="varchar" MaxLength="20" />
+          <Property Name="last_maintenance_date" Type="date" />
+        </EntityType>
+        <EntityType Name="station_usage_statistics">
+          <Key>
+            <PropertyRef Name="id_statistics" />
+          </Key>
+          <Property Name="id_statistics" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_station" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="total_uses" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="work_schedule">
+          <Key>
+            <PropertyRef Name="id_work_schedule" />
+          </Key>
+          <Property Name="id_work_schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shift_started" Type="time" Nullable="false" />
+          <Property Name="shift_end" Type="time" Nullable="false" />
+        </EntityType>
+        <Association Name="public_clients_id_gender_fkey">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_gender_fkey">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_role_fkey">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_work_schedule_fkey">
+          <End Role="work_schedule" Type="Self.work_schedule" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work_schedule">
+              <PropertyRef Name="id_work_schedule" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_work_schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_feedback_id_client_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_feedback_id_scooter_fkey">
+          <End Role="scooters" Type="Self.scooters" Multiplicity="1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scooters">
+              <PropertyRef Name="id_scooter" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="id_scooter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_client_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_promotion_fkey">
+          <End Role="promotions" Type="Self.promotions" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="promotions">
+              <PropertyRef Name="id_promotion" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_promotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_scooter_fkey">
+          <End Role="scooters" Type="Self.scooters" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scooters">
+              <PropertyRef Name="id_scooter" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_scooter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_station_usage_statistics_id_station_fkey">
+          <End Role="charging_station" Type="Self.charging_station" Multiplicity="1" />
+          <End Role="station_usage_statistics" Type="Self.station_usage_statistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="charging_station">
+              <PropertyRef Name="id_station" />
+            </Principal>
+            <Dependent Role="station_usage_statistics">
+              <PropertyRef Name="id_station" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище VorobyevP_Scooter_practiceModelContainer">
+          <EntitySet Name="charging_station" EntityType="Self.charging_station" Schema="public" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="public" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="public" store:Type="Tables" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" Schema="public" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="public" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="public" store:Type="Tables" />
+          <EntitySet Name="promotions" EntityType="Self.promotions" Schema="public" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="public" store:Type="Tables" />
+          <EntitySet Name="scooters" EntityType="Self.scooters" Schema="public" store:Type="Tables" />
+          <EntitySet Name="station_usage_statistics" EntityType="Self.station_usage_statistics" Schema="public" store:Type="Tables" />
+          <EntitySet Name="work_schedule" EntityType="Self.work_schedule" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="public_clients_id_gender_fkey" Association="Self.public_clients_id_gender_fkey">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_gender_fkey" Association="Self.public_employees_id_gender_fkey">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_role_fkey" Association="Self.public_employees_id_role_fkey">
+            <End Role="role" EntitySet="role" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_work_schedule_fkey" Association="Self.public_employees_id_work_schedule_fkey">
+            <End Role="work_schedule" EntitySet="work_schedule" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_feedback_id_client_fkey" Association="Self.public_feedback_id_client_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+          <AssociationSet Name="public_feedback_id_scooter_fkey" Association="Self.public_feedback_id_scooter_fkey">
+            <End Role="scooters" EntitySet="scooters" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_client_fkey" Association="Self.public_orders_id_client_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_promotion_fkey" Association="Self.public_orders_id_promotion_fkey">
+            <End Role="promotions" EntitySet="promotions" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_scooter_fkey" Association="Self.public_orders_id_scooter_fkey">
+            <End Role="scooters" EntitySet="scooters" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="public_station_usage_statistics_id_station_fkey" Association="Self.public_station_usage_statistics_id_station_fkey">
+            <End Role="charging_station" EntitySet="charging_station" />
+            <End Role="station_usage_statistics" EntitySet="station_usage_statistics" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VorobyevP_Scooter_practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="charging_station">
+          <Key>
+            <PropertyRef Name="id_station" />
+          </Key>
+          <Property Name="id_station" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="available_slots" Type="Int32" />
+          <NavigationProperty Name="station_usage_statistics" Relationship="Self.public_station_usage_statistics_id_station_fkey" FromRole="charging_station" ToRole="station_usage_statistics" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="client_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="client_patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_gender" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="gender" Relationship="Self.public_clients_id_gender_fkey" FromRole="clients" ToRole="gender" />
+          <NavigationProperty Name="feedback" Relationship="Self.public_feedback_id_client_fkey" FromRole="clients" ToRole="feedback" />
+          <NavigationProperty Name="orders" Relationship="Self.public_orders_id_client_fkey" FromRole="clients" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="id_employee" />
+          </Key>
+          <Property Name="id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="id_gender" Type="Int32" />
+          <Property Name="emp_surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emp_patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="id_work_schedule" Type="Int32" Nullable="false" />
+          <Property Name="salary" Type="Decimal" Precision="19" Scale="2" />
+          <NavigationProperty Name="gender" Relationship="Self.public_employees_id_gender_fkey" FromRole="employees" ToRole="gender" />
+          <NavigationProperty Name="role" Relationship="Self.public_employees_id_role_fkey" FromRole="employees" ToRole="role" />
+          <NavigationProperty Name="work_schedule" Relationship="Self.public_employees_id_work_schedule_fkey" FromRole="employees" ToRole="work_schedule" />
+          <Property Name="pswd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="id_feedback" />
+          </Key>
+          <Property Name="id_feedback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <Property Name="id_scooter" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="clients" Relationship="Self.public_feedback_id_client_fkey" FromRole="feedback" ToRole="clients" />
+          <NavigationProperty Name="scooters" Relationship="Self.public_feedback_id_scooter_fkey" FromRole="feedback" ToRole="scooters" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namegender" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.public_clients_id_gender_fkey" FromRole="gender" ToRole="clients" />
+          <NavigationProperty Name="employees" Relationship="Self.public_employees_id_gender_fkey" FromRole="gender" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <Property Name="id_scooter" Type="Int32" Nullable="false" />
+          <Property Name="start_datetime" Type="DateTime" Precision="6" />
+          <Property Name="end_datetime" Type="DateTime" Precision="6" />
+          <Property Name="total_cost" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="id_promotion" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.public_orders_id_client_fkey" FromRole="orders" ToRole="clients" />
+          <NavigationProperty Name="promotions" Relationship="Self.public_orders_id_promotion_fkey" FromRole="orders" ToRole="promotions" />
+          <NavigationProperty Name="scooters" Relationship="Self.public_orders_id_scooter_fkey" FromRole="orders" ToRole="scooters" />
+        </EntityType>
+        <EntityType Name="promotions">
+          <Key>
+            <PropertyRef Name="id_promotion" />
+          </Key>
+          <Property Name="id_promotion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="promotionname" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" />
+          <Property Name="discount_amount" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.public_orders_id_promotion_fkey" FromRole="promotions" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namerole" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="employees" Relationship="Self.public_employees_id_role_fkey" FromRole="role" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="scooters">
+          <Key>
+            <PropertyRef Name="id_scooter" />
+          </Key>
+          <Property Name="id_scooter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="power" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="max_speed" Type="Int32" />
+          <Property Name="weight" Type="Int32" />
+          <Property Name="load_capacity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="last_maintenance_date" Type="DateTime" />
+          <NavigationProperty Name="feedback" Relationship="Self.public_feedback_id_scooter_fkey" FromRole="scooters" ToRole="feedback" />
+          <NavigationProperty Name="orders" Relationship="Self.public_orders_id_scooter_fkey" FromRole="scooters" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="station_usage_statistics">
+          <Key>
+            <PropertyRef Name="id_statistics" />
+          </Key>
+          <Property Name="id_statistics" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_station" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="total_uses" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="charging_station" Relationship="Self.public_station_usage_statistics_id_station_fkey" FromRole="station_usage_statistics" ToRole="charging_station" />
+        </EntityType>
+        <EntityType Name="work_schedule">
+          <Key>
+            <PropertyRef Name="id_work_schedule" />
+          </Key>
+          <Property Name="id_work_schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shift_started" Type="Time" Nullable="false" />
+          <Property Name="shift_end" Type="Time" Nullable="false" />
+          <NavigationProperty Name="employees" Relationship="Self.public_employees_id_work_schedule_fkey" FromRole="work_schedule" ToRole="employees" />
+        </EntityType>
+        <Association Name="public_station_usage_statistics_id_station_fkey">
+          <End Role="charging_station" Type="Self.charging_station" Multiplicity="1" />
+          <End Role="station_usage_statistics" Type="Self.station_usage_statistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="charging_station">
+              <PropertyRef Name="id_station" />
+            </Principal>
+            <Dependent Role="station_usage_statistics">
+              <PropertyRef Name="id_station" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_clients_id_gender_fkey">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_feedback_id_client_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_client_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_gender_fkey">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_role_fkey">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_employees_id_work_schedule_fkey">
+          <End Role="work_schedule" Type="Self.work_schedule" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work_schedule">
+              <PropertyRef Name="id_work_schedule" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_work_schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_feedback_id_scooter_fkey">
+          <End Role="scooters" Type="Self.scooters" Multiplicity="1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scooters">
+              <PropertyRef Name="id_scooter" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="id_scooter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_promotion_fkey">
+          <End Role="promotions" Type="Self.promotions" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="promotions">
+              <PropertyRef Name="id_promotion" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_promotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="public_orders_id_scooter_fkey">
+          <End Role="scooters" Type="Self.scooters" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scooters">
+              <PropertyRef Name="id_scooter" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_scooter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VorobyevP_Scooter_practiceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="charging_station" EntityType="Self.charging_station" />
+          <EntitySet Name="clients" EntityType="Self.clients" />
+          <EntitySet Name="employees" EntityType="Self.employees" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" />
+          <EntitySet Name="gender" EntityType="Self.gender" />
+          <EntitySet Name="orders" EntityType="Self.orders" />
+          <EntitySet Name="promotions" EntityType="Self.promotions" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="scooters" EntityType="Self.scooters" />
+          <EntitySet Name="station_usage_statistics" EntityType="Self.station_usage_statistics" />
+          <EntitySet Name="work_schedule" EntityType="Self.work_schedule" />
+          <AssociationSet Name="public_station_usage_statistics_id_station_fkey" Association="Self.public_station_usage_statistics_id_station_fkey">
+            <End Role="charging_station" EntitySet="charging_station" />
+            <End Role="station_usage_statistics" EntitySet="station_usage_statistics" />
+          </AssociationSet>
+          <AssociationSet Name="public_clients_id_gender_fkey" Association="Self.public_clients_id_gender_fkey">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="public_feedback_id_client_fkey" Association="Self.public_feedback_id_client_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_client_fkey" Association="Self.public_orders_id_client_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_gender_fkey" Association="Self.public_employees_id_gender_fkey">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_role_fkey" Association="Self.public_employees_id_role_fkey">
+            <End Role="role" EntitySet="role" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_employees_id_work_schedule_fkey" Association="Self.public_employees_id_work_schedule_fkey">
+            <End Role="work_schedule" EntitySet="work_schedule" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="public_feedback_id_scooter_fkey" Association="Self.public_feedback_id_scooter_fkey">
+            <End Role="scooters" EntitySet="scooters" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_promotion_fkey" Association="Self.public_orders_id_promotion_fkey">
+            <End Role="promotions" EntitySet="promotions" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="public_orders_id_scooter_fkey" Association="Self.public_orders_id_scooter_fkey">
+            <End Role="scooters" EntitySet="scooters" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище VorobyevP_Scooter_practiceModelContainer" CdmEntityContainer="VorobyevP_Scooter_practiceEntities">
+          <EntitySetMapping Name="charging_station">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.charging_station">
+              <MappingFragment StoreEntitySet="charging_station">
+                <ScalarProperty Name="id_station" ColumnName="id_station" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="available_slots" ColumnName="available_slots" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.clients">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="client_surname" ColumnName="client_surname" />
+                <ScalarProperty Name="client_name" ColumnName="client_name" />
+                <ScalarProperty Name="client_patronymic" ColumnName="client_patronymic" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.employees">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="pswd" ColumnName="pswd" />
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="emp_surname" ColumnName="emp_surname" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_patronymic" ColumnName="emp_patronymic" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="id_work_schedule" ColumnName="id_work_schedule" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedback">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.feedback">
+              <MappingFragment StoreEntitySet="feedback">
+                <ScalarProperty Name="id_feedback" ColumnName="id_feedback" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="id_scooter" ColumnName="id_scooter" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gender">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.gender">
+              <MappingFragment StoreEntitySet="gender">
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="namegender" ColumnName="namegender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.orders">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="id_scooter" ColumnName="id_scooter" />
+                <ScalarProperty Name="start_datetime" ColumnName="start_datetime" />
+                <ScalarProperty Name="end_datetime" ColumnName="end_datetime" />
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="id_promotion" ColumnName="id_promotion" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="promotions">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.promotions">
+              <MappingFragment StoreEntitySet="promotions">
+                <ScalarProperty Name="id_promotion" ColumnName="id_promotion" />
+                <ScalarProperty Name="promotionname" ColumnName="promotionname" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="namerole" ColumnName="namerole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scooters">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.scooters">
+              <MappingFragment StoreEntitySet="scooters">
+                <ScalarProperty Name="id_scooter" ColumnName="id_scooter" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="max_speed" ColumnName="max_speed" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="load_capacity" ColumnName="load_capacity" />
+                <ScalarProperty Name="last_maintenance_date" ColumnName="last_maintenance_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="station_usage_statistics">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.station_usage_statistics">
+              <MappingFragment StoreEntitySet="station_usage_statistics">
+                <ScalarProperty Name="id_statistics" ColumnName="id_statistics" />
+                <ScalarProperty Name="id_station" ColumnName="id_station" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="total_uses" ColumnName="total_uses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_schedule">
+            <EntityTypeMapping TypeName="VorobyevP_Scooter_practiceModel.work_schedule">
+              <MappingFragment StoreEntitySet="work_schedule">
+                <ScalarProperty Name="id_work_schedule" ColumnName="id_work_schedule" />
+                <ScalarProperty Name="shift_started" ColumnName="shift_started" />
+                <ScalarProperty Name="shift_end" ColumnName="shift_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

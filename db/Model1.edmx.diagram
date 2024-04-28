@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb61a741c77d47398a8c7fc61f118731" Name="Diagram1">
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.charging_station" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.clients" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.employees" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.feedback" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.gender" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.orders" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.promotions" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.role" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.scooters" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.station_usage_statistics" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VorobyevP_Scooter_practiceModel.work_schedule" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_station_usage_statistics_id_station_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_clients_id_gender_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_feedback_id_client_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_orders_id_client_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_employees_id_gender_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_employees_id_role_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_employees_id_work_schedule_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_feedback_id_scooter_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_orders_id_promotion_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="VorobyevP_Scooter_practiceModel.public_orders_id_scooter_fkey" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

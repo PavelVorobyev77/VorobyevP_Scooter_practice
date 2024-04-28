@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorobyevP_Scooter_practice", "VorobyevP_Scooter_practice.csproj", "{C2D84423-1402-4833-B27C-427AA7511FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hash_pswd", "..\..\..\1 СЕМЕСТР\Программные модули\hash_pswd\hash_pswd.csproj", "{D19F5CFE-0DFE-43D4-BBED-DABAE7D1F1D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2D84423-1402-4833-B27C-427AA7511FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D84423-1402-4833-B27C-427AA7511FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D84423-1402-4833-B27C-427AA7511FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D84423-1402-4833-B27C-427AA7511FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19F5CFE-0DFE-43D4-BBED-DABAE7D1F1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19F5CFE-0DFE-43D4-BBED-DABAE7D1F1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19F5CFE-0DFE-43D4-BBED-DABAE7D1F1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19F5CFE-0DFE-43D4-BBED-DABAE7D1F1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20B535C8-B21E-4E9A-894D-826ED5B0AE07}
+	EndGlobalSection
+EndGlobal
