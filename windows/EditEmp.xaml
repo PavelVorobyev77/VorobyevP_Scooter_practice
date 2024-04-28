@@ -1,0 +1,88 @@
+﻿<Window x:Class="VorobyevP_Scooter_practice.windows.EditEmp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VorobyevP_Scooter_practice.windows"
+        mc:Ignorable="d"
+        Title="EditEmp" Height="800" Width="1000">
+    
+    <FlowDocumentReader Grid.ColumnSpan="3" Margin="5,5,5,5" Name="Doc">
+        <FlowDocument Name="flowdoc">
+            <Section>
+                <BlockUIContainer>
+                    <Grid Margin="0, 0, -400, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" MinHeight="326"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="imgPhoto" Source="/Resources/photo.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="Uniform" Width="200" Margin="10"/>
+                            <Button Content="Добавить фото" Click="AddPhotoButton_Click" VerticalAlignment="Center" HorizontalAlignment="Left" Height="36" Margin="10,0,0,0" Grid.Column="1"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="1" Margin="10,10,10,10">
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Фамилия: *" Width="156"/>
+                                <TextBox x:Name="txtWorkerSurname" Margin="5,0,0,0" Width="186" Text="{Binding WorkerSurname}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Имя: *" Width="156"/>
+                                <TextBox x:Name="txtWorkerName" Width="187" Text="{Binding WorkerName}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Отчество:" Width="156"/>
+                                <TextBox x:Name="txtWorkerPatronymic" Margin="5,0,0,0" Width="186" Text="{Binding WorkerPatronymic}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Номер телефона: *" Width="156"/>
+                                <TextBox x:Name="txtPhoneNumber" Margin="5,0,0,0" Width="187" Text="{Binding phoneNumber}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Логин: *" Width="156"/>
+                                <TextBox x:Name="txtLogin" Width="187" Text="{Binding w_login}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Пароль: *" Width="156"/>
+                                <TextBox x:Name="txtPswd" Margin="5,0,0,0" Width="187" Text="" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="47">
+                                <Label Content="Роль: *" Width="152"/>
+                                <ComboBox x:Name="cbRoles" Height="41" Margin="10,0,0,0" SelectedValue="{Binding Path = id_role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="cbRoles_SelectionChanged" Width="203"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="47">
+                                <Label Content="График: *" Width="152"/>
+                                <ComboBox x:Name="cbwsch" Height="41" Margin="10,0,0,0" SelectedValue="{Binding Path = id_work_schedule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="cbwsch_SelectionChanged" Width="203"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="311,0,0,0" Height="50" Width="551">
+                            <Button Content="Сохранить" Click="SaveButton_Click" Margin="0,0,10,0"/>
+                            <Button Content="Очистить" Click="CleanButton_Click" Margin="0,0,5,0"/>
+                            <Button Content="Удалить" Click="DeleteButton_Click" Margin="0,0,5,0"/>
+                            <Button Content="Печать информации" Click="PrintList_Click" Width="160"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="10,0,578,25"><Run Text="*"/><Run Text=" Поля которые должны обязательно быть заполненными"/></TextBlock>
+                    </Grid>
+                </BlockUIContainer>
+            </Section>
+        </FlowDocument>
+    </FlowDocumentReader>
+</Window>

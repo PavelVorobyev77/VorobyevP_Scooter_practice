@@ -15,22 +15,13 @@ using System.Windows.Shapes;
 namespace VorobyevP_Scooter_practice.windows
 {
     /// <summary>
-    /// Логика взаимодействия для ManagerWindow.xaml
+    /// Логика взаимодействия для AddEmp.xaml
     /// </summary>
-    public partial class ManagerWindow : Window
+    public partial class AddEmp : Window
     {
-        public string WelcomeMessage { get; set; }
-
-        public ManagerWindow()
+        public AddEmp()
         {
             InitializeComponent();
-        }
-
-        private void EmpButton_Click(object sender, RoutedEventArgs e)
-        {
-            EmpWindow empWindow = new EmpWindow();
-            empWindow.Show();
-            Close();
         }
     }
 }
