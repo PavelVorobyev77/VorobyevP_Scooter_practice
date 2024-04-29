@@ -32,5 +32,10 @@ namespace VorobyevP_Scooter_practice.windows
             empWindow.Show();
             Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VorobyevP_Scooter_practice.windows"
         mc:Ignorable="d"
-        Title="EditEmp" Height="800" Width="1000">
+        Title="EditEmp" Height="900" Width="1000">
     
     <FlowDocumentReader Grid.ColumnSpan="3" Margin="5,5,5,5" Name="Doc">
         <FlowDocument Name="flowdoc">
@@ -33,32 +33,37 @@
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Фамилия: *" Width="156"/>
-                                <TextBox x:Name="txtWorkerSurname" Margin="5,0,0,0" Width="186" Text="{Binding WorkerSurname}" Height="32"/>
+                                <TextBox x:Name="txtemp_surname" Margin="5,0,0,0" Width="186" Text="{Binding emp_surname}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Имя: *" Width="156"/>
-                                <TextBox x:Name="txtWorkerName" Width="187" Text="{Binding WorkerName}" Height="32"/>
+                                <TextBox x:Name="txtemp_name" Width="187" Text="{Binding emp_name}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Отчество:" Width="156"/>
-                                <TextBox x:Name="txtWorkerPatronymic" Margin="5,0,0,0" Width="186" Text="{Binding WorkerPatronymic}" Height="32"/>
+                                <TextBox x:Name="txtemp_patronymic" Margin="5,0,0,0" Width="186" Text="{Binding emp_patronymic}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Номер телефона: *" Width="156"/>
-                                <TextBox x:Name="txtPhoneNumber" Margin="5,0,0,0" Width="187" Text="{Binding phoneNumber}" Height="32"/>
+                                <TextBox x:Name="txtphone_number" Margin="5,0,0,0" Width="187" Text="{Binding phone_number}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Логин: *" Width="156"/>
-                                <TextBox x:Name="txtLogin" Width="187" Text="{Binding w_login}" Height="32"/>
+                                <TextBox x:Name="txtLogin" Width="187" Text="{Binding email}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Пароль: *" Width="156"/>
                                 <TextBox x:Name="txtPswd" Margin="5,0,0,0" Width="187" Text="" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="47">
+                                <Label Content="Пол: " Width="152"/>
+                                <ComboBox x:Name="cbgen" Height="41" Margin="10,0,0,0" SelectedValue="{Binding Path = id_gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="cbgen_SelectionChanged" Width="203"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="47">
@@ -70,6 +75,12 @@
                                 <Label Content="График: *" Width="152"/>
                                 <ComboBox x:Name="cbwsch" Height="41" Margin="10,0,0,0" SelectedValue="{Binding Path = id_work_schedule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="cbwsch_SelectionChanged" Width="203"/>
                             </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Зарплата: " Width="156"/>
+                                <TextBox x:Name="txtSalary" Width="187" Text="{Binding salary}" Height="32"/>
+                            </StackPanel>
+
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="311,0,0,0" Height="50" Width="551">

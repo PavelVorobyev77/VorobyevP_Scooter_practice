@@ -115,7 +115,9 @@ namespace VorobyevP_Scooter_practice.windows
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            AddEmp addEmp = new AddEmp();
+            addEmp.Show();
+
         }
 
         /*
@@ -145,7 +147,9 @@ namespace VorobyevP_Scooter_practice.windows
 
         private void UpdateList_Click(object sender, RoutedEventArgs e)
         {
-
+            EmpWindow newEmpWindow = new EmpWindow();
+            newEmpWindow.Show();
+            Close();
         }
 
         private void btnPrintList_Click(object sender, RoutedEventArgs e)

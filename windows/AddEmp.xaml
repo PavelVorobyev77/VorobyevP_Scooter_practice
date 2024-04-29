@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VorobyevP_Scooter_practice.windows"
         mc:Ignorable="d"
-        Title="AddEmp" Height="800" Width="1000">
+        Title="AddEmp" Height="900" Width="1000">
     <FlowDocumentReader Grid.ColumnSpan="3" Margin="5,5,5,5" Name="Doc">
         <FlowDocument Name="flowdoc">
             <Section>
@@ -32,32 +32,41 @@
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Фамилия: *" Width="156"/>
-                                <TextBox x:Name="txtWorkerSurname" Margin="5,0,0,0" Width="186" Text="{Binding emp_surname}" Height="32"/>
+                                <TextBox x:Name="txtemp_surname" Margin="5,0,0,0" Width="186" Text="{Binding emp_surname}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Имя: *" Width="156"/>
-                                <TextBox x:Name="txtWorkerName" Width="187" Text="{Binding emp_name}" Height="32"/>
+                                <TextBox x:Name="txtemp_name" Width="187" Text="{Binding emp_name}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Отчество:" Width="156"/>
-                                <TextBox x:Name="txtWorkerPatronymic" Margin="5,0,0,0" Width="186" Text="{Binding emp_patronymic}" Height="32"/>
+                                <TextBox x:Name="txtemp_patronymic" Margin="5,0,0,0" Width="186" Text="{Binding emp_patronymic}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Номер телефона: *" Width="156"/>
-                                <TextBox x:Name="txtPhoneNumber" Margin="5,0,0,0" Width="187" Text="{Binding phone_number}" Height="32"/>
+                                <TextBox x:Name="txtphone_number" Margin="5,0,0,0" Width="187" Text="{Binding phone_number}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Логин: *" Width="156"/>
-                                <TextBox x:Name="txtLogin" Width="187" Text="{Binding w_login}" Height="32"/>
+                                <TextBox x:Name="txtLogin" Width="187" Text="{Binding email}" Height="32"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42">
                                 <Label Content="Пароль: *" Width="156"/>
-                                <TextBox x:Name="txtPswd" Margin="5,0,0,0" Width="187" Text="{Binding w_pswd}" Height="32"/>
+                                <TextBox x:Name="txtPswd" Margin="5,0,0,0" Width="187" Text="{Binding pswd}" Height="32"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="47">
+                                <Label Content="Пол:" Width="152"/>
+                                <ComboBox x:Name="cb3" Width="183" SelectionChanged="ComboBox_SelectionChanged3" Height="41" Margin="10,0,0,0">
+                                    <ComboBoxItem Content="Мужской" Tag="1"/>
+                                    <ComboBoxItem Content="Женский" Tag="2"/>
+
+                                </ComboBox>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="47">
@@ -75,10 +84,15 @@
                                 <ComboBox x:Name="cb2" Width="183" SelectionChanged="ComboBox_SelectionChanged2" Height="41" Margin="10,0,0,0">
                                     <ComboBoxItem Content="09:00-18:00" Tag="1"/>
                                     <ComboBoxItem Content="12:00-21:00" Tag="2"/>
-                                    <ComboBoxItem Content="15:00-24:00" Tag="3"/>
-                                    <ComboBoxItem Content="24:00-09:00" Tag="4"/>
+                                    <ComboBoxItem Content="15:00-00:00" Tag="3"/>
+                                    <ComboBoxItem Content="00:00-09:00" Tag="4"/>
 
                                 </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="42">
+                                <Label Content="Зарплата:" Width="156"/>
+                                <TextBox x:Name="txtSalary" Margin="5,0,0,0" Width="187" Text="{Binding salary}" Height="32"/>
                             </StackPanel>
                         </StackPanel>
 
@@ -88,7 +102,7 @@
                             <Button Content="Печать информации" Click="PrintList_Click" Width="160"/>
                         </StackPanel>
 
-                        <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="10,0,434,25"><Run Text="*"/><Run Text=" Поля которые должны обязательно быть заполненными"/></TextBlock>
+                        <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="10,0,434,23"><Run Text="*"/><Run Text=" Поля которые должны обязательно быть заполненными"/></TextBlock>
                     </Grid>
                 </BlockUIContainer>
             </Section>

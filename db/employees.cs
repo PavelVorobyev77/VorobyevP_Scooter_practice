@@ -11,20 +11,39 @@ namespace VorobyevP_Scooter_practice.db
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class employees
     {
         public int id_employee { get; set; }
         public int id_role { get; set; }
         public Nullable<int> id_gender { get; set; }
+
+        [Required(ErrorMessage = "Фамилия работника является обязательным полем.")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Фамилия работника должна быть от 3 до 50 символов.")]
         public string emp_surname { get; set; }
+
+        [Required(ErrorMessage = "Имя работника является обязательным полем.")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Имя работника должно быть от 2 до 50 символов.")]
         public string emp_name { get; set; }
+
+        [Required(ErrorMessage = "Отчество работника является обязательным полем.")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Отчество работника должно быть от 2 до 50 символов.")]
         public string emp_patronymic { get; set; }
+
+        [Required(ErrorMessage = "Номер телефона является обязательным полем.")]
+        [RegularExpression(@"^(\+7|8)[0-9]{10}$", ErrorMessage = "Неверный формат номера телефона. Номер должен начинаться с +7 или 8 и содержать ровно 11 цифр.")]
         public string phone_number { get; set; }
+
+        [Required(ErrorMessage = "Логин является обязательным полем.")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Логин должен содержать от 4 до 20 символов.")]
+        [RegularExpression(@"^[\w-]+(?:\.[\w-]+)*@[\w-]+(?:\.[\w-]+)*$", ErrorMessage = "Логин должен содержать только буквы, цифры, символы: _, -, и должен иметь формат электронной почты.")]
         public string email { get; set; }
         public string address { get; set; }
         public int id_work_schedule { get; set; }
         public Nullable<decimal> salary { get; set; }
+
+        //[Required(ErrorMessage = "Пароль является обязательным полем.")]
         public string pswd { get; set; }
     
         public virtual gender gender { get; set; }

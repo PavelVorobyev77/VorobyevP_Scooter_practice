@@ -41,20 +41,35 @@ namespace VorobyevP_Scooter_practice.windows
                 model = txtmodel.Text,
                 manufacturer = txtmanufacturer.Text,
                 power = txtpower.Text,
-                max_speed = int.Parse(txtmaxspeed.Text),
-                weight = int.Parse(txtweight.Text),
                 load_capacity = txtloadcap.Text
             };
 
 
-            /*
-            * Обработка ошибок валидации:
-            *  - Если присутствуют ошибки валидации:
-            *      - Объединяются все сообщения об ошибках в одну строку.
-            *      - Отображается сообщение об ошибке с объединенными сообщениями.
-            */
-            var validationContext = new ValidationContext(newScooter, serviceProvider: null, items: null);
+            /// Создание списка для хранения результатов валидации
             var validationResults = new List<ValidationResult>();
+
+            // Преобразование строки в число для свойств max_speed и weight
+            int maxSpeed;
+            if (!int.TryParse(txtmaxspeed.Text, out maxSpeed))
+            {
+                validationResults.Add(new ValidationResult("Максимальная скорость должна быть числом.", new[] { nameof(newScooter.max_speed) }));
+            }
+            else
+            {
+                newScooter.max_speed = maxSpeed;
+            }
+
+            int weight;
+            if (!int.TryParse(txtweight.Text, out weight))
+            {
+                validationResults.Add(new ValidationResult("Вес должен быть числом.", new[] { nameof(newScooter.weight) }));
+            }
+            else
+            {
+                newScooter.weight = weight;
+            }
+
+            var validationContext = new ValidationContext(newScooter, serviceProvider: null, items: null);
             Validator.TryValidateObject(newScooter, validationContext, validationResults, validateAllProperties: true);
 
             if (validationResults.Any())
