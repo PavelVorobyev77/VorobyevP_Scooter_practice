@@ -1,0 +1,37 @@
+﻿<Window x:Class="VorobyevP_Scooter_practice.windows.StationStatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VorobyevP_Scooter_practice.windows"
+        mc:Ignorable="d"
+        Title="StationStatWindow" Height="900" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="3">
+            <Label Margin="10">Список станций:</Label>
+            <ListBox x:Name="station_usage_statistics" Margin="20,2,20,2" Height="300" />
+            <Label Width="982" Content="Номер Станции"/>
+            <TextBox x:Name="tbIDStation"/>
+            <Label>Дата</Label>
+            <DatePicker x:Name="dpDate" Width="982"/>
+            <Label Width="982">Общее количество использований</Label>
+            <TextBox x:Name="tbTotalUses"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnAdd" Padding="10" Margin="10" Width="142" Height="53">Добавить</Button>
+                <Button x:Name="btnEdit" Padding="10" Margin="10" Width="142" Height="53">Изменить</Button>
+                <Button x:Name="btnDelete" Padding="10" Margin="10" Height="48">Удалить</Button>
+                <Button x:Name="UpdateList" Grid.Column="2" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="36" Width="38" Click="UpdateList_Click" Margin="29,0,0,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/up.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

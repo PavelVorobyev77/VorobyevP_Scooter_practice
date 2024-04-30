@@ -121,7 +121,7 @@ namespace VorobyevP_Scooter_practice.windows
         }
 
         /*
-         * Обработчик двойного щелчка по элементу списка Workers.
+         * Обработчик двойного щелчка по элементу списка employees.
          * Открывает окно редактирования выбранного работника.
          */
         private void LViewProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)

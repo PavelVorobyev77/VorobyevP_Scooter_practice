@@ -77,11 +77,17 @@
     <Compile Include="windows\EditScooter.xaml.cs">
       <DependentUpon>EditScooter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\EditStat.xaml.cs">
+      <DependentUpon>EditStat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\EmpWindow.xaml.cs">
       <DependentUpon>EmpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\StationStatWindow.xaml.cs">
+      <DependentUpon>StationStatWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -163,11 +169,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\EditStat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\EmpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\StationStatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

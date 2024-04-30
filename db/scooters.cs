@@ -11,8 +11,7 @@ namespace VorobyevP_Scooter_practice.db
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class scooters
     {
         public scooters()
@@ -20,29 +19,13 @@ namespace VorobyevP_Scooter_practice.db
             this.feedback = new HashSet<feedback>();
             this.orders = new HashSet<orders>();
         }
-
+    
         public int id_scooter { get; set; }
-
-        [Required(ErrorMessage = "Модель является обязательным полем.")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Модель должна быть от 2 до 50 символов.")]
         public string model { get; set; }
-
-        [Required(ErrorMessage = "Производитель является обязательным полем.")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Производитель должен быть от 2 до 50 символов.")]
         public string manufacturer { get; set; }
-
-        [Required(ErrorMessage = "Мощность является обязательным полем.")]
         public string power { get; set; }
-
-        [Required(ErrorMessage = "Скорость является обязательным полем.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Максимальная скорость должна быть больше 0.")]
-        public int? max_speed { get; set; }
-
-        [Required(ErrorMessage = "Вес является обязательным полем.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Вес должен быть больше 0.")]
-        public int? weight { get; set; }
-
-        [Required(ErrorMessage = "Грузоподъемность является обязательным полем.")]
+        public Nullable<int> max_speed { get; set; }
+        public Nullable<int> weight { get; set; }
         public string load_capacity { get; set; }
         public Nullable<System.DateTime> last_maintenance_date { get; set; }
     

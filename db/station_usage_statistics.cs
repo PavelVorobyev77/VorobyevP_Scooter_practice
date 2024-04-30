@@ -20,5 +20,10 @@ namespace VorobyevP_Scooter_practice.db
         public int total_uses { get; set; }
     
         public virtual charging_station charging_station { get; set; }
+
+        public override string ToString()
+        {
+            return $"{id_station}  {date}  {total_uses}";
+        }
     }
 }

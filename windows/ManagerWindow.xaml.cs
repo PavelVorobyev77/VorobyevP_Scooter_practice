@@ -35,7 +35,9 @@ namespace VorobyevP_Scooter_practice.windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            StationStatWindow statWindow = new StationStatWindow();
+            statWindow.Show();
+            Close();
         }
     }
 }

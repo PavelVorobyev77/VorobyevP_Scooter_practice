@@ -121,9 +121,9 @@ namespace VorobyevP_Scooter_practice.windows
             txtPswd.Text = string.Empty;
             txtSalary.Text = string.Empty;
 
-            cb.SelectedIndex = -1; // Очищаем выбранное значение
-            cb2.SelectedIndex = -1; // Очищаем выбранное значение
-            cb3.SelectedIndex = -1; // Очищаем выбранное значение
+            cb.SelectedIndex = 0; // Очищаем выбранное значение
+            cb2.SelectedIndex = 0; // Очищаем выбранное значение
+            cb3.SelectedIndex = 0; // Очищаем выбранное значение
         }
 
         private void PrintList_Click(object sender, RoutedEventArgs e)
