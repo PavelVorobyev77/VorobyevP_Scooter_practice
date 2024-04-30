@@ -16,16 +16,16 @@
             <Label Margin="10">Список станций:</Label>
             <ListBox x:Name="station_usage_statistics" Margin="20,2,20,2" Height="300" />
             <Label Width="982" Content="Номер Станции"/>
-            <TextBox x:Name="tbIDStation"/>
-            <Label>Дата</Label>
+            <TextBox x:Name="tbIDStation" Width="962"/>
+            <Label Width="982">Дата</Label>
             <DatePicker x:Name="dpDate" Width="982"/>
             <Label Width="982">Общее количество использований</Label>
-            <TextBox x:Name="tbTotalUses"/>
+            <TextBox x:Name="tbTotalUses" Width="962"/>
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btnAdd" Padding="10" Margin="10" Width="142" Height="53">Добавить</Button>
                 <Button x:Name="btnEdit" Padding="10" Margin="10" Width="142" Height="53">Изменить</Button>
-                <Button x:Name="btnDelete" Padding="10" Margin="10" Height="48">Удалить</Button>
+                <Button x:Name="btnDelete" Padding="10" Margin="10" Height="52">Удалить</Button>
                 <Button x:Name="UpdateList" Grid.Column="2" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="36" Width="38" Click="UpdateList_Click" Margin="29,0,0,0">
                     <Button.Background>
                         <ImageBrush ImageSource="/Resources/up.png"/>

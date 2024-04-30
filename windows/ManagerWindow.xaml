@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ManagerWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Список сотрудников" HorizontalAlignment="Left" Margin="122,106,0,0" VerticalAlignment="Top" Click="EmpButton_Click" Width="156"/>
-        <Button Content="Список чего-то" HorizontalAlignment="Left" Margin="482,106,0,0" VerticalAlignment="Top" Click="Button_Click" Width="156"/>
+        <Button Content="Список сотрудников" HorizontalAlignment="Left" Margin="122,106,0,0" VerticalAlignment="Top" Click="EmpButton_Click" Width="225"/>
+        <Button Content="Список статистик по станциям" HorizontalAlignment="Left" Margin="482,106,0,0" VerticalAlignment="Top" Click="Button_Click" Width="225"/>
     </Grid>
 </Window>
